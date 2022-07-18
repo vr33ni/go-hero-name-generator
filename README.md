@@ -1,0 +1,1 @@
+# go-hero-name-generator
