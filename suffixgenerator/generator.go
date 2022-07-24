@@ -1,4 +1,4 @@
-package suffixGenerator
+package suffixgenerator
 
 import (
 	"fmt"
@@ -6,17 +6,17 @@ import (
 )
 
 // Generator takes the name from the user input and adds a random suffix to it
-type Generator interface {
+type HeroNameGenerator interface {
 	Generate(name string) string
 }
 
-// SuffixGenerator is reponsible for randomly picking from the data
-type SuffixGenerator struct {
+// HeroNameGenerator is reponsible for randomly picking from the data
+type heroNameGenerator struct {
 	random *rand.Rand
 }
 
 // Generate creates a random suffix and returns the hero name
-func (rn *SuffixGenerator) Generate(name string) string {
+func (rn *heroNameGenerator) Generate(name string) string {
 	randomAdjective := ADJECTIVES[rn.random.Intn(len(ADJECTIVES))]
 	randomJob := ROLES[rn.random.Intn(len(ROLES))]
 
@@ -25,12 +25,12 @@ func (rn *SuffixGenerator) Generate(name string) string {
 	return randomName
 }
 
-// NewSuffixGenerator creates a new SuffixGenerator with a pseudo random number generator
-func NewSuffixGenerator(seed int64) Generator {
-	suffixGenerator := &SuffixGenerator{
+// NewHeroNameGenerator creates a new SuffixGenerator with a pseudo random number generator
+func NewHeroNameGenerator(seed int64) HeroNameGenerator {
+	heroNameGenerator := &heroNameGenerator{
 		random: rand.New(rand.New(rand.NewSource(99))),
 	}
-	suffixGenerator.random.Seed(seed)
+	heroNameGenerator.random.Seed(seed)
 
-	return suffixGenerator
+	return heroNameGenerator
 }

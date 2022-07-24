@@ -1,4 +1,4 @@
-package suffixGenerator
+package suffixgenerator
 
 var (
 	ADJECTIVES = []string{"brave", "lazy", "bitter", "misty", "silent", "funny", "crazy", "super"}
